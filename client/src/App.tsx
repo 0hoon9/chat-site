@@ -1,9 +1,10 @@
 import React from 'react';
+import Main from './screens/Main';
 
 const App = () => {
   return (
     <>
-      <h1>chat site project</h1>
+      <Main />
     </>
   );
 };
