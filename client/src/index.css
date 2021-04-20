@@ -12,3 +12,9 @@
   margin-top: 80px;
   height: calc(100vh-80px);
 }
+
+/* chat area */
+.chatarea {
+  height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
+}

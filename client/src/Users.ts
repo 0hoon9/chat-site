@@ -21,12 +21,17 @@ export const users: User[] = [
     username: 'user4',
     online: false,
   },
+  {
+    email: 'user5@ex.com',
+    username: 'user5',
+    online: true,
+  },
 ];
 
-export const currentUser: User = {
+export const myUser: User = {
   email: 'user2@ex.com',
   username: 'user2',
   online: true,
 };
 
-export const typingUsers: string[] = ['user2', 'user4'];
+export const typingUsers: string[] = ['user2', 'user5'];

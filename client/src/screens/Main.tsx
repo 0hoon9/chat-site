@@ -1,14 +1,17 @@
 import React from 'react';
+import ChatArea from '../components/ChatArea';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import { users, currentUser, typingUsers } from '../Users';
+import { messageInput, messages } from '../Messages';
+import { users, myUser, typingUsers } from '../Users';
 
 export const Main: React.FC = () => {
   return (
     <>
       <Navbar />
       <div className='flex m-0 content'>
-        <Sidebar users={users} currentUser={currentUser} typingUsers={typingUsers} />
+        <Sidebar users={users} myUser={myUser} typingUsers={typingUsers} />
+        <ChatArea messages={messages} messageInput={messageInput} />
       </div>
     </>
   );

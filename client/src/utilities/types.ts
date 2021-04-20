@@ -5,3 +5,11 @@ export interface User {
   username: string;
   online?: boolean;
 }
+
+//Message
+
+export interface Message {
+  content: string;
+  date: string;
+  author: string;
+}

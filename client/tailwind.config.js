@@ -6,6 +6,7 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
+      sans: [theme.fontFamily.sans],
       mono: [theme.fontFamily.mono],
     },
     colors: {
@@ -16,9 +17,10 @@ module.exports = {
       red: colors.red,
       blue: {
         reallight: '#DBEAFE',
-        light: '#93C5FD',
-        DEFAULT: '#3B82F6',
-        dark: '#1E40AF',
+        light: '##BFDBFE',
+        DEFAULT: '#93C5FD',
+        dark: '#00001B',
+        navy: '##00002D',
       },
       dark: {
         DEFAULT: '#111827',
