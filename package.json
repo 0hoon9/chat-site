@@ -1,0 +1,7 @@
+{
+  "dependencies": {},
+  "scripts": {
+    "data:import": "node server/src/seeder",
+    "data:destroy": "node server/src/seeder -d"
+  }
+}
