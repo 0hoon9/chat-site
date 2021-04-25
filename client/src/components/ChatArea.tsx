@@ -32,7 +32,9 @@ export const ChatArea: React.FC<Props> = ({ messages, messageInput }) => {
               className='w-full p-3 placeholder-gray-300 border border-gray-200 rounded-md shadow-md focus:outline-none focus:border-blue-light'
               placeholder='작성중..'
             />
-            <button className='hidden'>입력</button>
+            <button className='submit -ml-20 pb-3 px-7 py-1 border-gray-200 rounded-md shadow-md text-white bg-blue font-bold text-2xl'>
+              <i className='fas fa-envelope'></i>
+            </button>
           </form>
         </div>
       </div>
