@@ -75,7 +75,7 @@ export const Login: React.FC = () => {
             label='이메일'
             name='email'
             value={user.email}
-            placeholder='doge@example.com'
+            placeholder='neco@example.com'
             onChange={handleChange}
             onBlur={handleBlur}
             error={errors.email}

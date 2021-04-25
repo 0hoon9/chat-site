@@ -2,8 +2,6 @@ import { io, Socket } from 'socket.io-client';
 
 import { WEB_SOCKET_HOST } from '../utilities/config';
 
-// A little API for the stateful socket connection, just to keep it out of the global
-// namespace and away from the socket middleware
 export default class SocketClient {
   socket: Socket | null;
 
