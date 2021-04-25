@@ -39,5 +39,3 @@ export const ChatArea: React.FC<Props> = ({ messages, messageInput }) => {
     </div>
   );
 };
-
-export default ChatArea;

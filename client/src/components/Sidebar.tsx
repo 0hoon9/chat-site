@@ -33,5 +33,3 @@ export const Sidebar: React.FC<Props> = ({ users, myUser, typingUsers }) => {
     </div>
   );
 };
-
-export default Sidebar;
