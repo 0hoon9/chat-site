@@ -14,7 +14,7 @@ export const Navbar: React.FC<Props> = ({ onClick }) => {
       </div>
       <button
         type='button'
-        className='px-3 py-2 text-gray-300 text-sm bg-blue-dark font-medium rounded-full py-3 px-6 shadow-md hover:bg-gray-800 disabled:opacity-50 focus:outline-none'
+        className='px-3 py-2 text-blue-reallight text-sm bg-blue-dark font-medium rounded-full py-3 px-6 shadow-md hover:bg-gray-800 disabled:opacity-50 focus:outline-none'
         onClick={onClick}
       >
         로그아웃

@@ -7,6 +7,7 @@ import { PrivateRoute } from './routes/PrivateRoute';
 import { Login } from './screens/Login';
 import { Main } from './screens/Main';
 import { login } from './store/auth.slice';
+import { Loader } from './components/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,10 @@ export const App = () => {
 
     setIfUserIsLoggedIn(true);
   }, [dispatch, setIfUserIsLoggedIn]);
+
+  if (!ifUserIsLoggedIn) {
+    return <Loader />;
+  }
 
   return (
     <Switch>

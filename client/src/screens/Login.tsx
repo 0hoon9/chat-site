@@ -32,6 +32,7 @@ export const Login: React.FC = () => {
     }
   };
 
+  // 필드에 빈 값이 있거나 에러가 있을경우 로그인버튼 disabled
   const loginButtonDisabled = () => {
     if (!user.email || !user.username) return true;
     if (!!errors.email || errors.username) return true;

@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import { Message, Session, User } from './types';
 import { getUniqueUsersOnlineByUsername } from './utilities';
+import { PORT, CLIENT_HOST } from './config';
 
 const app: Express = express();
 
@@ -12,7 +13,7 @@ const app: Express = express();
 const server: http.Server = http.createServer(app);
 const io: socketio.Server = new socketio.Server(server, {
   cors: {
-    origin: process.env.CLIENT,
+    origin: CLIENT_HOST,
     credentials: true,
   },
 });
@@ -25,12 +26,14 @@ let messages: Message[] = [];
 let activeUserSessions: Session[] = [];
 
 // routes
-app.get('/api/users', (request: Request, response: Response) => {
-  response.send({ users });
+app.get('/api/messages', (request: Request, response: Response) => {
+  console.log('api messages....');
+  response.send({ messages });
 });
 
-app.get('/api/messages', (request: Request, response: Response) => {
-  response.send({ messages });
+app.get('/api/users', (request: Request, response: Response) => {
+  console.log('api users....');
+  response.send({ users });
 });
 
 // Socket server-side
@@ -42,13 +45,13 @@ io.on('connection', (socket) => {
   socket.on('new login', (user: User) => {
     console.log(`user connected: ${user.username}`);
 
-    // Add the new login to the list of all users
+    // 유저목록에 추가
     if (!users.some((existingUser) => existingUser.username === user.username)) {
       users = [...users, user];
       io.emit('new user added', user);
     }
 
-    // Save the current username
+    // 유저이름 저장
     socket.sessionUsername = user.username;
     activeUserSessions.push({
       session: id,
@@ -58,7 +61,7 @@ io.on('connection', (socket) => {
     io.emit('users online', getUniqueUsersOnlineByUsername(activeUserSessions));
   });
 
-  // Send Message
+  // 메세지 보낼때
   socket.on('send message', (message: Message) => {
     console.log(`message: ${message.author}: ${message.content}`);
     messages.push(message);
@@ -66,31 +69,30 @@ io.on('connection', (socket) => {
     io.emit('receive message', message);
   });
 
-  // User Typing
+  // 타이핑 중 일때
   socket.on('typing...', (username: string) => {
     console.log(`User Typing...: ${username}`);
 
     io.emit('user starts typing...', username);
   });
 
-  // User Stopped Typing
+  // 타이핑 멈췄을때
   socket.on('stopped typing...', (username: string) => {
     console.log(`User Stopped Typing...: ${username}`);
-
     io.emit('user stopped typing...', username);
   });
 
   // Disconnect
   socket.on('disconnect', () => {
     console.log(`user disconnected: ${socket.sessionUsername}`);
-    // Remove the current session
+    // 최근 세션을 지운다
     activeUserSessions = activeUserSessions.filter((user) => !(user.username === socket.sessionUsername && user.session === id));
 
     io.emit('users online', getUniqueUsersOnlineByUsername(activeUserSessions));
   });
 });
 
-app.set('port', process.env.PORT);
+app.set('port', PORT);
 
 // Start server
-server.listen(process.env.PORT, () => console.log('서버 5000포트에서 구동중...'));
+server.listen(PORT, () => console.log(`서버 ${PORT}포트에서 구동중...`));

@@ -35,10 +35,22 @@ const usersSlice = createSlice({
     removeTypingUser: (state, { payload }) => {
       state.typingUsers = state.typingUsers.filter((username) => username !== payload);
     },
+    sendThisUserIsTyping: (state, { payload }: PayloadAction<any>) => {},
+    sendThisUserStoppedTyping: (state, { payload }: PayloadAction<any>) => {},
   },
 });
 
-export const { setUsers, addUser, setOnlineUsers, setLoading, setLoadingComplete, setTypingUser, removeTypingUser } = usersSlice.actions;
+export const {
+  setUsers,
+  addUser,
+  setOnlineUsers,
+  setLoading,
+  setLoadingComplete,
+  setTypingUser,
+  removeTypingUser,
+  sendThisUserIsTyping,
+  sendThisUserStoppedTyping,
+} = usersSlice.actions;
 export default usersSlice.reducer;
 
 //Action
@@ -47,7 +59,7 @@ export function getUsers() {
     dispatch(setLoading());
 
     try {
-      const { data } = await axios('/api/messages');
+      const { data } = await axios('/api/users');
 
       dispatch(setUsers(data.users));
     } catch (e) {

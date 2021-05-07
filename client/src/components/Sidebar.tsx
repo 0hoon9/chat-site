@@ -8,9 +8,6 @@ export interface Props {
 }
 
 export const Sidebar: React.FC<Props> = ({ users, myUser, typingUsers }) => {
-  console.log(users);
-  console.log(myUser);
-  console.log(typingUsers);
   return (
     <div className='flex-none min-w-300 bg-blue-dark overflow-y-auto'>
       <div>

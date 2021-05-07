@@ -36,6 +36,9 @@ module.exports = {
       width: {
         500: '500px',
       },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      },
     },
   },
   variants: {

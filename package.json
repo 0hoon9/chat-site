@@ -1,7 +1,8 @@
 {
-  "dependencies": {},
-  "scripts": {
-    "data:import": "node server/src/seeder",
-    "data:destroy": "node server/src/seeder -d"
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168"
   }
 }
